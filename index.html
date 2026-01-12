@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Just One Question 💌</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px 45px;
+            border-radius: 22px;
+            text-align: center;
+            width: 340px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+            animation: popIn 0.8s ease;
+        }
+        
+        h1 {
+            font-size: 20px;
+            margin-bottom: 35px;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .buttons {
+            position: relative;
+            height: 120px;
+        }
+        
+        button {
+            padding: 12px 26px;
+            border-radius: 30px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        #yesBtn {
+            background: #ff4b7d;
+            color: white;
+            margin-top: 65px;
+        }
+        
+        #noBtn {
+            background: #ddd;
+            color: #444;
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+        
+        #answer {
+            display: none;
+            margin-top: 25px;
+            color: #ff4b7d;
+            animation: fadeIn 1s ease;
+            line-height: 1.4;
+        }
+        
+        .big-answer {
+            font-size: 30px;
+            font-weight: 700;
+            display: block;
+            margin-top: 6px;
+        }
+        
+        @keyframes popIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>
+            Do you know what is the difference between Earth and me? 💌
+        </h1>
+
+        <div class="buttons">
+            <button id="noBtn">No 🙈</button>
+        </div>
+
+        <button id="yesBtn">Yes ❤️</button>
+
+        <div id="answer">
+            🌍 Earth has its own moon,<br>
+            <span class="big-answer">and I have you 🙈😘🤗</span>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const answer = document.getElementById("answer");
+
+        noBtn.addEventListener("mouseenter", () => {
+            const x = Math.random() * 220 - 110;
+            const y = Math.random() * 90 - 45;
+            noBtn.style.transform = `translate(${x}px, ${y}px)`;
+        });
+
+        yesBtn.addEventListener("click", () => {
+            answer.style.display = "block";
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+
+</html>
