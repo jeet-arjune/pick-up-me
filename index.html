@@ -86,28 +86,16 @@
     }
 
     @keyframes popIn {
-      from {
-        transform: scale(0.85);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
+      from { transform: scale(0.85); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* 📱 Mobile fine-tuning */
+    /* 📱 Mobile polish */
     @media (max-width: 480px) {
       body {
         align-items: flex-start;
@@ -148,33 +136,49 @@
     </div>
   </div>
 
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic">
+    <source src="love.mp3" type="audio/mpeg">
+  </audio>
+
   <script>
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-  const answer = document.getElementById("answer");
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const answer = document.getElementById("answer");
+    const music = document.getElementById("bgMusic");
 
-  function moveButton() {
-    const x = Math.random() * 240 - 120;
-    const y = Math.random() * 120 - 60;
-    noBtn.style.transform = `translate(${x}px, ${y}px)`;
-  }
+    function moveButton() {
+      const x = Math.random() * 240 - 120;
+      const y = Math.random() * 120 - 60;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
 
-  /* Desktop: escape on hover */
-  noBtn.addEventListener("mouseenter", moveButton);
+    // Desktop escape
+    noBtn.addEventListener("mouseenter", moveButton);
 
-  /* Mobile: escape on touch */
-  noBtn.addEventListener("touchstart", (e) => {
-    e.preventDefault();   // stops the tap
-    moveButton();
-  });
+    // Mobile escape
+    noBtn.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      moveButton();
+    });
 
-  yesBtn.addEventListener("click", () => {
-    answer.style.display = "block";
-    yesBtn.style.display = "none";
-    noBtn.style.display = "none";
-  });
-</script>
+    yesBtn.addEventListener("click", () => {
+      answer.style.display = "block";
+      yesBtn.style.display = "none";
+      noBtn.style.display = "none";
 
+      // 🎶 Play music
+      music.currentTime = 0;
+      music.volume = 0.6;
+      music.play();
+
+      // ⏱ Stop after 17 seconds
+      setTimeout(() => {
+        music.pause();
+        music.currentTime = 0;
+      }, 17000);
+    });
+  </script>
 
 </body>
 </html>
